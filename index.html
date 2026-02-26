@@ -1443,7 +1443,29 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 })();
 </script>
 
+<script>
+  const link = 'https://pay.ggcheckout.com.br/SEU-CHECKOUT';
 
+  function setBackRedirect(url) {
+    let urlBackRedirect = url.trim() +
+      (url.indexOf('?') > 0 ? '&' : '?') +
+      document.location.search.replace('?', '');
+
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+
+    window.addEventListener('popstate', () => {
+      setTimeout(() => {
+        location.href = urlBackRedirect;
+      }, 1);
+    });
+  }
+
+  setBackRedirect(link);
+</script>
+
+	
 </body>
 
 
