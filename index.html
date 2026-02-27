@@ -1495,6 +1495,37 @@ const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(
 </script>
 
 
+
+
+	<script>
+document.addEventListener('click', function(e) {
+
+  var el = e.target.closest('a');
+
+  if (!el) return;
+
+  var href = el.getAttribute('href') || '';
+
+  if (
+    href.includes('whatsapp.com') ||
+    href.includes('wa.me')
+  ) {
+
+    if (typeof fbq !== 'undefined') {
+
+      fbq('track', 'Lead', {
+        content_name: 'WhatsApp Click',
+        content_category: 'Lead WhatsApp'
+      });
+
+      console.log('Lead WhatsApp disparado');
+
+    }
+
+  }
+
+}, true);
+</script>
 	
 </body>
 
